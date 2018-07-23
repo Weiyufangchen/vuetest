@@ -35,9 +35,11 @@
   <P>{{msg.toUpperCase()}}</P>
   <h2>2. 指令一: 强制数据绑定</h2>
   <img v-bind:src="imgUrl" alt="vue"> <!--关联data数据-->
+  <!--强制数据绑定的省略语法-->
   <img :src="imgUrl" alt="vue">
   <h2>3. 指令二: 绑定事件监听</h2>
   <button v-on:click="handleClick">测试</button>
+  <!--绑定事件监听的省略语法-->
   <button @click="handleClick">测试</button>
 </div>
 <script type="text/javascript" src="../js/vue.js"></script>
