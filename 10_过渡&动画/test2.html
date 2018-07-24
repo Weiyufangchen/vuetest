@@ -3,13 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>10_过渡&动画2</title>
+  <style>
+    /*设置显示过渡样式*/
+    .fade-enter-active{
+      animation: bounce-in 1s;
+    }
+    .fade-leave-active{
+      animation: bounce-in 1s reverse;
+    }
 
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
 <body>
-
+<div id="test">
+  <button @click="isShow=!isShow">scaleFade</button>
+  <br>
+  <transition name="fade">
+    <!--p标签独占一行，缩放的时候，如果文字内容不够一行，会出现文字跑开的效果-->
+    <p v-if="isShow" style="display: inline-block;">王维 <br>
+      - 山居秋暝 <br>
+      - 空山新雨后，天气晚来秋。 <br>
+      - 明月松间照，清泉石上流。 <br>
+      - 竹喧归浣女，莲动下渔舟。 <br>
+      - 随意春芳歇，王孙自可留。
+    </p>
+  </transition>
+</div>
 <script type="text/javascript" src="../js/vue.js"></script>
 <script>
-
+  new Vue({
+    el: "#test",
+    data: {
+      isShow: true
+    }
+  })
 </script>
 </body>
 </html>

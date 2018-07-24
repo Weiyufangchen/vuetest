@@ -23,11 +23,56 @@
   beforeDestory(): 做收尾工作, 如: 清除定时器
 -->
 
-<div>
-
+<div id="test">
+  <button @click="destroyVM">destroy vue</button>
+  <p v-show="isShow">hello vue</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript"></script>
+<script type="text/javascript">
+  new Vue({
+    el: '#test',
+    data: {
+      isShow: true
+    },
+    beforeCreate(){
+      console.log('beforeCreate()')
+    },
+    created(){
+      console.log('created()')
+    },
+    beforeMount(){
+      console.log('beforeMount()')
+    },
+    mounted(){
+      //执行异步任务（定时器/ajax请求）
+      console.log('mounted()')
+      this.intervalId = setInterval(()=> {
+        console.log('------')
+        this.isShow = !this.isShow
+      }, 3000)
+    },
+    beforeUpdate(){
+      console.log('beforeUpdate()')
+    },
+    updated(){
+      console.log('updated()')
+    },
+    beforeDestroy(){
+      console.log('beforeDestroy()')
+      //收尾工作（清除定时器）
+      clearInterval(this.intervalId)
+    },
+    destroyed(){
+      console.log('destroyed()')
+    },
+    methods: {
+      destroyVM(){
+        //摧毁vm
+        this.$destroy()
+      }
+    }
+  })
+</script>
 </body>
 </html>
