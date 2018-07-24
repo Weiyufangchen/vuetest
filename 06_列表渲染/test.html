@@ -13,18 +13,52 @@
 2. 列表的更新显示
   删除item
   替换item
+
+  data中的数组的方法，不再是原数组中的方法，而是变异方法：（方法被重写）
+    第一步，调用原生数组方法
+    第二步，更新页面
 -->
 
 <div id="demo">
   <h2>测试: v-for 遍历数组</h2>
-
+  <ul>
+    <li v-for="(p, index) in persons" :key="index">
+      {{index}}---{{p.name}}---{{p.age}}---
+      <button @click="deleteP(index)">删除</button>---
+      <button @click="updateP(index, {name: 'xiaowu', age: 14})">更新</button>
+    </li>
+  </ul>
   <h2>测试: v-for 遍历对象</h2>
-
+  <ul>
+    <li v-for="(value, key) in persons[1]" :key="key">
+      {{key}}={{value}}
+    </li>
+  </ul>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+  new Vue({
+    el: '#demo',
+    data: {
+      persons: [  //已经绑定了set方法，进行监视
+        {name: 'Tom', age: 15},
+        {name: 'Rose', age: 16},
+        {name: 'Jack', age: 20},
+        {name: 'Bob', age: 18},
+        {name: 'Peter', age: 22}
+      ]
+    },
+    methods: {
+      deleteP (index) {
+        this.persons.splice(index, 1)   //不是原生数组的split方法，而是变异方法（原生调用+更新页面）
+      },
+      updateP(index, newP){  //更新的是数组内部的数据，并不是更新数组本身，persons的属性值并没有改变。
+        // this.persons[index] = newP  //数据变了，但是页面没有更新，没有用数组的变异方法，vue不知道
+        this.persons.splice(index, 1, newP)  //数据变了，页面数据也更新了，说明数组的方法变异了
+      }
+    }
+  })
 </script>
 </body>
 </html>

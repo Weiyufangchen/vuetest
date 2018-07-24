@@ -15,10 +15,23 @@
 -->
 
 <div id="demo">
+  <p v-if="ok">表白成功</p>  <!--当ok为false时，直接删除这个元素，内存中没有这个对象-->
+  <p v-else>表白失败</p>
+
+  <p v-show="ok">求婚成功</p>  <!--当ok为false时，通过样式来隐藏，设置display：none，并没有删除这个元素，内存中还有对象的P标签-->
+  <p v-show="!ok">求婚失败</p>
+  <button @click="ok=!ok">更新</button>
+  <!--如果频繁切换，则show的效率高-->
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el: '#demo',
+    data: {
+      ok: true
+    }
+  })
 </script>
 </body>
 </html>

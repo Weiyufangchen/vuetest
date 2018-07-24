@@ -34,6 +34,7 @@
   <p>{{msg}}</p>
   <P>{{msg.toUpperCase()}}</P>
   <h2>2. 指令一: 强制数据绑定</h2>
+  <img src="imgUrl" alt="vue">  <!--不能访问-->
   <img v-bind:src="imgUrl" alt="vue"> <!--关联data数据-->
   <!--强制数据绑定的省略语法-->
   <img :src="imgUrl" alt="vue">
@@ -44,9 +45,9 @@
 </div>
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-  new Vue({
+  const vm = new Vue({
     el: '#app',
-    data: {  //vm中也有这些属性
+    data: {  //data的所有属性都会成为vm对象的属性，而模板页面中可以直接访问
       msg: 'Hello xiaowu',
       imgUrl: 'https://cn.vuejs.org/images/logo.png'
     },
@@ -56,6 +57,8 @@
       }
     }
   })
+  console.log(vm)
+  console.log(vm.msg);
 </script>
 </body>
 </html>

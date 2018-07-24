@@ -18,17 +18,17 @@
 <!--模板：html中包含js-->
 <div id="test">
   <input type="text" v-model="name">  <!--指定：v-开头  vue自定义的标签属性-->
-  <p>Hello, {{name}}</p>  <!--双大括号表达式  vue自定义的语法-->
+  <p>Hello, {{name}}</p>  <!--双大括号表达式：动态显示数据  vue自定义的语法-->
 </div>
 
 <p>{{name}}</p>  <!--纯文本，没有被vue管理到-->
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-  new Vue({ //创建一个vue的实例，传入一个对象
-    el: '#test',  //选择器
-    data: {   //展示的数据
-      name: 'biubiubiu'
+  new Vue({ //配置对象（属性名是固定的一些名称）
+    el: '#test',  //选择器，element，指定vue管理的区域元素
+    data: {   //展示的数据，为模板提供数据
+      name: 'biubiubiu'  //初始值
     }
   })
 </script>

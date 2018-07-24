@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>起步</title>
+</head>
+<body>
+<!--<div id="app">
+  {{message}}  &lt;!&ndash;双大括号语法&ndash;&gt;
+</div>-->
+
+<!--<div id="app-2">
+  <span v-bind:title="message">  &lt;!&ndash;指令：v-开头自定义标签属性&ndash;&gt;
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>-->
+
+<!--<div id="app-3">
+  <p v-if="seen">现在你看到我了</p>
+</div>-->
+
+<!--<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{todo.text}}
+    </li>
+  </ol>
+</div>-->
+
+<!--<div id="app-5">
+  <p>{{message}}</p>
+  <button @click="reverseMessage">反转消息</button>
+</div>-->
+
+<div id="app-6">
+  <p>{{message}}</p>
+  <input type="text" v-model="message">
+</div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 生产环境版本，优化了尺寸和速度 -->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+<script type="text/javascript">
+  /*const vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue~~'
+    }
+  })*/
+
+  /*const app2 = new Vue({
+    el: '#app-2',
+    data: {
+      message: '页面加载于 ' + new Date().toLocaleString()
+    }
+  })*/
+
+  /*const app3 = new Vue({
+    el: '#app-3',
+    data: {
+      seen: true
+    }
+  })*/
+
+  /*const app4 = new Vue({
+    el: '#app-4',
+    data: {
+      todos: [
+        {text: 'html'},
+        {text: 'javascript'},
+        {text: 'vue'}
+      ]
+    }
+  })*/
+
+  /*const app5 = new Vue({
+    el: '#app-5',
+    data: {
+      message: 'Hello Vue.js~~~'
+    },
+    methods: {
+      reverseMessage () {
+        this.message = this.message.split('').reverse().join('')
+      }
+    }
+  })*/
+
+  const app6 = new Vue({
+    el: '#app-6',
+    data: {
+      message: 'Hello xiaowu!'
+    }
+  })
+</script>
+
+</body>
+</html>
