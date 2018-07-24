@@ -5,10 +5,27 @@
   <title>17_插件</title>
 </head>
 <body>
-
+<div id="test">
+  <p v-my-directive="msg"></p>   <!--调用插件的全局资源/指令-->
+</div>
 <script type="text/javascript" src="../js/vue.js"></script>
+<!--引入插件库-->
+<script type="text/javascript" src="./vue-plugin.js"></script>
 <script type="text/javascript">
+  //首先声明使用vue插件
+  Vue.use(MyPlugin)  //背后会执行插件对象的install方法来安装插件
 
+  //调用插件的全局方法
+  Vue.myGlobalMethod()
+
+  const vm = new Vue({
+    el: '#test',
+    data: {
+      msg: 'hello xiaowu'
+    }
+  })
+  //调用插件的实例方法
+  vm.$myMethod()
 </script>
 </body>
 </html>

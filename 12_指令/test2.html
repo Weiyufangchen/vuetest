@@ -27,10 +27,46 @@
   1. 功能类型于v-text, 但转换为全大写
   2. 功能类型于v-text, 但转换为全小写
 -->
+<div id="test">
+  <p v-upper-text="msg"></p>
+  <p v-lower-text="msg"></p>
+</div>
 
+<div id="test2">
+  <p v-upper-text="msg"></p>
+  <!--<p v-lower-text="msg"></p>  &lt;!&ndash;已经报错，局部指令不能在test2区域执行&ndash;&gt;-->
+</div>
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  //定义全局指令
+    //el: 指定属性所在的标签对象
+    //binding: 包含指令相关信息的对象
+  Vue.directive('upper-text', function (el, binding) {
+    console.log('upper-text', binding)
+    el.textContent = binding.value.toUpperCase()
+  })
 
+  new Vue({
+    el: '#test',
+    data: {
+      msg: 'I love you!'
+    },
+    //注册局部指令 只在当前test区域内有效
+    directives: {
+      'lower-text': {
+        bind(el, binding){
+          el.innerHTML = binding.value.toLowerCase()
+        }
+      }
+    }
+  })
+  new Vue({
+    el: '#test2',
+    data: {
+      msg: 'I love you!'
+    },
+    //注册局部指令 只在当前test区域内有效
+  })
 </script>
 </body>
 </html>
